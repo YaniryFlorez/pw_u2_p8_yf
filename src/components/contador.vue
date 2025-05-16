@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <h1>Contador</h1>
+    <h1>{{ title }}</h1>
     <p>{{ this.numero }}<sup>2</sup>= {{ calCuadrado }}</p>
     <div>
-        <button v-on:click="incrementar() ">+1</button>
-        <button v-on:click="decrementar() ">-1</button>
+      <button @click="incrementar()">+1</button>
+      <button v-on:click="decrementar()">-1</button>
     </div>
-   
+
     <!--
     <p>{{ numero+1 }}</p>
     <p>{{ 'Mi nombre es:'+texto }}</p>
@@ -20,48 +20,69 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-
 export default {
+  // props:['title', 'value'],
+  props: {
+    title: String,
+    value: {
+      type:Number,
+      //requed: true,//es necesario que se envie
+      requed: false,
+      default:100,
+      validattor(value){
+        return value>0;
+      }
+    },
+
+    p1: Boolean,
+    p2: Array,
+    p3: Object,
+    //p4: function,
+    p5: Date,
+    // p6: Symbol,
+  },
   data() {
     return {
-        //reactivos
-      numero: 5,
-      texto: 'Yaniry Florez',
+      //reactivos
+      titulo: "Contador",
+      numero: this.value,
+      texto: "Yaniry Florez",
       activo: true,
-      usuario:{
-        nombre: 'Yaniry',
+      usuario: {
+        nombre: "Yaniry",
         edad: 28,
-        genero: 'Femenino',
+        genero: "Femenino",
       },
       //arreglo
       arreglo: ["amariilo", "azul"],
-
-
-      
     };
   },
-  methods:{
-    calcularCuadrado(){
-       console.log('entro al metodo');
-        return this.numero*this.numero;
-
+  methods: {
+    calcularCuadrado() {
+      console.log("entro al metodo");
+      return this.numero * this.numero;
     },
-    incrementar(){
-        this.numero++;
+    incrementar() {
+      this.numero++;
     },
-     decrementar(){
-        this.numero--;
+    decrementar() {
+      this.numero--;
     },
-
-},
-    computed:{
-        calCuadrado(){
-           console.log('entro al metodo computada');
-        return this.numero*this.numero; 
-        }
+  },
+  computed: {
+    calCuadrado() {
+      console.log("entro al metodo computada");
+      return this.numero * this.numero;
     },
+  },
+  created(){
+    if(this.value > 0){
+      console.log("es corre");
+    }else{
+      throw new Error("error el valor no puede ser negarivo")
+    }
   }
+};
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
   
-  <ContadorView/>
+  <EstudianteView/>
 </template>
 
 <script>
@@ -8,11 +8,14 @@
 import ContadorView from '@/views/ContadorView.vue';
 import HolaMundoVue from './views/HolaMundoVue.vue'
 import ContadorViewvuevue from '@/views/ContadorView.vue'
+import EstudianteView from '@/views/EstudianteView.vue'
+
 
 export default {
   name: 'App',
   components: {
     ContadorView,
+    EstudianteView,
     
   }
 }
