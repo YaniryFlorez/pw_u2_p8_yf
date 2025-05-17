@@ -1,6 +1,6 @@
 <template>
   
-  <EstudianteView/>
+  <EstudianteTablaView/>
 </template>
 
 <script>
@@ -9,6 +9,8 @@ import ContadorView from '@/views/ContadorView.vue';
 import HolaMundoVue from './views/HolaMundoVue.vue'
 import ContadorViewvuevue from '@/views/ContadorView.vue'
 import EstudianteView from '@/views/EstudianteView.vue'
+import EstudianteTablaView from '@/views/EstudianteTablaView.vue'
+
 
 
 export default {
@@ -16,6 +18,7 @@ export default {
   components: {
     ContadorView,
     EstudianteView,
+    EstudianteTablaView,
     
   }
 }

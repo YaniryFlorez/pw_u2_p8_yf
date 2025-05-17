@@ -12,13 +12,28 @@
     <input v-model="nuevaCedula" id="id_cedula" type="text" />
     <button v-on:click="agragarEstudiante()">Agregar</button>
 
-    <ul>
-      <li v-for="{ nombre, apellido, fecha, genero, cedula } in lista" :key="nombre">
-        Nombre:{{ nombre }}-Apellido:{{ apellido }}-
-        Fecha Nacimiento:{{ fecha }}-Genero:{{ genero }}-
-        Cedula:{{ cedula }}
-      </li>
-    </ul>
+    <table class="tabla">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha Nacimiento</th>
+        <th>Genero</th>
+        <th>Cedula</th>
+        <th>Acción</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="{ nombre, apellido, fecha, genero, cedula, } in lista" :key="nombre + apellido">
+        <td>{{ nombre }}</td>
+        <td>{{ apellido }}</td>
+        <td>{{ fecha }}</td>
+        <td>{{ genero }}</td>
+        <td>{{ cedula }}</td>
+        <td ><button class="op">Ver</button></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -28,13 +43,8 @@ export default {
     return {
       nuevoNombre: "nuevo",
       lista: [
-        { nombre: "Yaniry", apellido: "Florez" },
-        { nombre: "Daniel", apellido: "Lopez" },
-        { nombre: "Pedro", apellido: "Ruiz" },
-        { nombre: "Andrea", apellido: "Rivera" },
-        { nombre: "Carlos", apellido: "Vargas" },
-        { nombre: "Ana", apellido: "Enriquez" },
-        { nombre: "Viviana", apellido: "Lopez" },
+        { nombre: "", apellido: "", fecha: "", genero:"", cedula:"" },
+       
       ],
     };
   },
@@ -45,7 +55,7 @@ export default {
         apellido: this.nuevoApellido,
         fecha: this.nuevaFecha,
         genero: this.nuevoGenero,
-        cedula: this.cedula,
+        cedula: this.nuevaCedula,
 
       };
       this.lista.unshift(nuevo);
@@ -110,5 +120,32 @@ li{
   color: #333;
   font-size: 15px;
 }
+/* Estilo para la tabla */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.tabla th, .tabla td {
+  border: 1px solid #b0c4de;
+  padding: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.tabla th {
+  background-color: #618ed1;
+  color: #fff;
+  font-weight: bold;
+}
+
+.tabla tr:nth-child(even) {
+  background-color: #f2f6fa;
+}
+.op{
+  font-size: 12px;
+}
+
 
 </style>
