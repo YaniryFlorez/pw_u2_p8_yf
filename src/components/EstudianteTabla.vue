@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div v-show="mostrar">
+      <h1>Estudiante Guardado!!</h1>
+    </div>
     <label for="id_nombre">Nombre</label>
     <input v-model="nuevoNombre" id="id_nombre" type="text" />
     <label for="id_apellido">Apellido</label>
@@ -46,6 +49,7 @@ export default {
         { nombre: "", apellido: "", fecha: "", genero:"", cedula:"" },
        
       ],
+      mostrar: false,
     };
   },
   methods: {
@@ -56,9 +60,16 @@ export default {
         fecha: this.nuevaFecha,
         genero: this.nuevoGenero,
         cedula: this.nuevaCedula,
+       
 
       };
       this.lista.unshift(nuevo);
+      this.mostrar= true;
+      setTimeout(()=>{this.mostrar=false;},3000)
+    },
+    limpiar(){
+     
+
     },
   },
 };
