@@ -1,6 +1,6 @@
 <template>
   
-  <ProductoView/>
+  <PreguntaView/>
 </template>
 
 <script>
@@ -9,8 +9,9 @@ import ContadorView from '@/views/ContadorView.vue';
 import HolaMundoVue from './views/HolaMundoVue.vue'
 import ContadorViewvuevue from '@/views/ContadorView.vue'
 import EstudianteView from '@/views/EstudianteView.vue'
-import EstudianteTablaView from '@/views/EstudianteTablaView.vue' */
-import ProductoView from './views/ProductoView.vue';
+import EstudianteTablaView from '@/views/EstudianteTablaView.vue' 
+import ProductoView from './views/ProductoView.vue';*/
+import PreguntaView from './views/PreguntaView.vue';
 
 
 
@@ -18,7 +19,7 @@ export default {
   name: 'App',
   components: {
   
-    ProductoView,
+    PreguntaView,
 
     
   }
