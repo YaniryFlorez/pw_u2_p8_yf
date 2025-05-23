@@ -1,40 +1,55 @@
 <template>
-  <div class="container">
-    <h1>Juego Yes or Not</h1>
-    <img
-      src="https://yesno.wtf/assets/no/19-2062f4c91189b1f88a9e809c10a5b0f0.gif"
-      alt="No hay imagen"
-    />
-
-    <div class="container2"></div>
-    <div class="pregunta-container">
-      <input
-        v-model="pregunta"
-        type="text"
-        id=""
-        placeholder="Hazme una Pregunta?"
-      />
-      <p>Recuerda terminar con un signo de pregunta (?)</p>
-      <h2>{{ pregunta }}</h2>
-      <h1>{{ respuesta }}</h1>
+    <div class="container">
+        <img v-if="imagen" :src="imagen" alt="No se pudo cargar" />
+        <div class="container-2">
+        </div>
+        <div class="pregunta-container">
+            <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
+            <p>Recuerda terminar con un signo de pregunta (?)</p>
+           <div v-if="esValida">
+             <h2>{{ pregunta }}</h2>
+            <h1>{{ respuesta }}</h1>
+           </div>
+ 
+        </div>
     </div>
-  </div>
 </template>
-
+ 
 <script>
+import {consultarRespuestaFachada} from '@/clients/YESNoClient.js';
 export default {
-  data() {
-    return {
-      pregunta: null,
-      respuesta: null,
-    };
-  },
-  whatch: {
-    pregunta(value, OldValue) {
-      console.log("valor actual " + value);
-      console.log("valor anterior " + OldValue);
+    data() {
+        return {
+            pregunta: null,
+            respuesta: null,
+            imagen:null,
+            esValida: false,
+        };
     },
-  },
+    watch: {
+        pregunta(value, oldValue) {
+          this.esValida = false;
+            if (value.includes('?')) {
+              this.esValida = true;
+                console.log("Valor actual: " + value);
+                console.log("Valor anterior: " + oldValue);
+                //Aqui deberia consultar el API
+                this.consumirAPI();
+            }
+        },
+    },
+ 
+    methods:{
+        async consumirAPI(){
+            this.respuesta="Pensando......";
+            const res= await consultarRespuestaFachada();
+            console.log(res);
+            console.log(res.answer);
+            console.log(res.image);
+            this.respuesta=res.answer;
+            this.imagen=res.image;
+        }
+    }
 };
 </script>
 
@@ -72,7 +87,7 @@ p {
 }
 h1,
 h2 {
-  color: rgb(132, 102, 240);
+  color: rgb(51, 226, 95);
 }
 h2 {
   margin-top: 60px;
