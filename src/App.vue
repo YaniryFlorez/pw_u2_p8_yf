@@ -1,6 +1,6 @@
 <template>
   
-  <PreguntaView/>
+  <PokemonView/>
 </template>
 
 <script>
@@ -11,17 +11,18 @@ import ContadorViewvuevue from '@/views/ContadorView.vue'
 import EstudianteView from '@/views/EstudianteView.vue'
 import EstudianteTablaView from '@/views/EstudianteTablaView.vue' 
 import ProductoView from './views/ProductoView.vue';*/
-import PreguntaView from './views/PreguntaView.vue';
-
-
-
+import PreguntaView from '@/views/PreguntaView.vue';
+import PokemonView from '@/views/PokemonView.vue';
 export default {
   name: 'App',
   components: {
-  
-    PreguntaView,
-
-    
+    //ContadorView,
+    //HolaMundoVue,
+    //ContadorViewvuevue,
+    //EstudianteView,
+    //EstudianteTablaView,
+    //PreguntaView,
+    PokemonView,
   }
 }
 </script>
@@ -32,7 +33,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #3521e6;
   margin-top: 60px;
 }
 </style>

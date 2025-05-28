@@ -9,6 +9,8 @@
            <div v-if="esValida">
              <h2>{{ pregunta }}</h2>
             <h1>{{ respuesta }}</h1>
+            <h1>{{ imagen }}</h1>
+
            </div>
  
         </div>
